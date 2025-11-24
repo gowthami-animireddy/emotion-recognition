@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.web
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_API_URL=http://localhost:3000
+    depends_on:
+      - python-api
+    networks:
+      - emotion-net
+
+  python-api:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=/app/models/emotion_model.pt
+    volumes:
+      - ./models:/app/models
+      - ./scripts:/app/scripts
+    networks:
+      - emotion-net
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+networks:
+  emotion-net:
+    driver: bridge

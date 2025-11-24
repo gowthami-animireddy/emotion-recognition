@@ -1,0 +1,17 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "description": "API endpoint for emotion recognition",
+      "required": true
+    }
+  },
+  "functions": {
+    "app/api/**": {
+      "memory": 1024,
+      "maxDuration": 60
+    }
+  }
+}
