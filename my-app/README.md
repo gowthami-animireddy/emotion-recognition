@@ -273,13 +273,3 @@ docker-compose up -d
 
 MIT License - see LICENSE file for details
 
-## Citation
-
-If you use this system in research, please cite:
-
-```bibtex
-@software{emotion_recognition_2024,
-  title={Hybrid CNN-RNN Multi-Modal Emotion Recognition System},
-  year={2024},
-  url={https://github.com/your-repo}
-}
